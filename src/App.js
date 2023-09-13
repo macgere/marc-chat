@@ -1,15 +1,28 @@
 import React, { useRef, useState } from 'react';
 import './App.css';
 
+// import firebase from 'firebase/app';
+// import 'firebase/firestore';
+// import 'firebase/auth';
+
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 import 'firebase/compat/auth';
 import 'firebase/compat/analytics';
+// import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
 
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 
-firebase.initializeApp({
+const { initializeApp } = require('firebase/app');
+const { getFirestore, collection, getDocs } = require('firebase/firestore');
+
+// firebase.initializeApp({
+  
+// })
+
+const firebaseConfig = {
   apiKey: "AIzaSyB--e1MNY_5RvDgOE4tWQDadaaEv6jGBeo",
   authDomain: "marc-chat-68b3c.firebaseapp.com",
   projectId: "marc-chat-68b3c",
@@ -17,16 +30,18 @@ firebase.initializeApp({
   messagingSenderId: "104422644642",
   appId: "1:104422644642:web:2d94ec929277993be5f0fb",
   measurementId: "G-H64GZM6MJ1"
-})
+};
 
 const auth = firebase.auth();
-const firestore = firebase.firestore();
+// const firestore = firebase.firestore();
 // const analytics = firebase.analytics();
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
 
 
 function App() {
 
-  const [user] = useAuthState(auth);
+  const [user, loading] = useAuthState(auth);
 
   return (
     <div className="App">
@@ -67,6 +82,8 @@ function SignOut() {
 
 
 function ChatRoom() {
+  var db = firebase.firestore();
+
   const dummy = useRef();
   const messagesRef = firestore.collection('messages');
   const query = messagesRef.orderBy('createdAt').limit(25);
