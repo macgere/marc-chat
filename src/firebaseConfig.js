@@ -1,6 +1,6 @@
 export const firebaseConfig = {
   apiKey: "AIzaSyB--e1MNY_5RvDgOE4tWQDadaaEv6jGBeo",
-  authDomain: "marc-chat-68b3c.firebaseapp.com",
+  authDomain: "marc-chat.vercel.app",
   projectId: "marc-chat-68b3c",
   storageBucket: "marc-chat-68b3c.appspot.com",
   messagingSenderId: "104422644642",
