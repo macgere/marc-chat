@@ -46,7 +46,7 @@ function SignIn() {
   return (
     <>
       <button className="sign-in" onClick={signInWithGoogle}>Sign in with Google</button>
-      <p>Do not violate the community guidelines or you will be banned for life!</p>
+      <p>This is a GROUP CHAT. You are talking to Marc, but so are others. We can all read each other's messages, so proceed with caution, and keep bad-mouthing to a minimum.</p>
     </>
   )
 
@@ -99,7 +99,7 @@ function ChatRoom() {
 
       <input value={formValue} onChange={(e) => setFormValue(e.target.value)} placeholder="say something nice" />
 
-      <button type="submit" disabled={!formValue}>🕊️</button>
+      <button type="submit" disabled={!formValue}>SEND</button>
 
     </form>
   </>)
